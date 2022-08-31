@@ -61,7 +61,7 @@ export default function MyTabs(props: any) {
         <Tab.Screen name="transactions" component={Transactions} options={{
           tabBarLabel: '',
           tabBarIcon: ({ color }) => (
-              <Entypo name="swap" size={30} color={color} />
+              <AntDesign name="swap" size={30} color={color} />
           ),
         }} />
 
