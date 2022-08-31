@@ -19,14 +19,17 @@ export class Transactions extends React.Component<any, any>{
     super();
     this.state = { transactions: [
         {
+          id: 1,
           description: 'teste',
           amount: 2
         },
         {
+          id: 2,
           description: 'teste',
           amount: -2
         },
         {
+          id: 3,
           description: 'teste',
           amount: 2
         },
@@ -48,18 +51,18 @@ export class Transactions extends React.Component<any, any>{
           </Header>
           <Container>
             {
-              this.state.transactions.map((t: { description: string, amount: number }, index: number) => (
+              this.state.transactions.map((t: { description: string, amount: number, id: number }, index: number) => (
                   <>
-                  <ItemList key={index}>
-                    <TransactionDescriptionContainer>
-                      <TransactionDescription>
+                  <ItemList key={t.id}>
+                    <TransactionDescriptionContainer key={`description container ${index || Math.random() * 1000}`}>
+                      <TransactionDescription key={`description ${index || Math.random() * 1000}`}>
                         {t.description}
                       </TransactionDescription>
                       <TransactionAccount>
                         {t.description}
                       </TransactionAccount>
                     </TransactionDescriptionContainer>
-                    <TransactionAmount value={t.amount}>
+                    <TransactionAmount value={t.amount} >
                       R$ {t.amount.toFixed(2).replace('.', ',').replace('-', '- ')}
                     </TransactionAmount>
 

@@ -1,14 +1,15 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Theme from "../../theme";
-import {useRoute} from '@react-navigation/native'
 import {Home} from "../../screens/Home";
 import { Entypo, AntDesign } from '@expo/vector-icons'
 import {Transactions} from "../../screens/Transactions";
-import {TouchableOpacity, View} from "react-native";
+import {View} from "react-native";
+import AddTransaction from "../../screens/AddTransaction";
 
 const Tab = createBottomTabNavigator();
 
-export default function MyTabs(props: any) {
+export default function MyTabs() {
+
   return (
       <Tab.Navigator screenOptions={{
         tabBarActiveBackgroundColor: '#FFF',
@@ -33,14 +34,12 @@ export default function MyTabs(props: any) {
               <Entypo name="home" size={30} color={color} />
           ),
         }} />
-        <Tab.Screen name="add" component={Transactions} options={{
+        <Tab.Screen name="add" component={AddTransaction} options={{
           tabBarLabel: '',
           tabBarIcon: ({ color }) => {
             if (color === Theme.COLORS.REVENUE) {
               return (
-                  <TouchableOpacity onPress={() => { props.navigation.navigate('Home') }}>
-                    <AntDesign name="close" size={30} color={color} />
-                  </TouchableOpacity>
+                    <AntDesign name="close" size={30} color={Theme.COLORS.EXPENSES} />
               )
             }
             return (
@@ -58,7 +57,7 @@ export default function MyTabs(props: any) {
             )
           },
         }} />
-        <Tab.Screen name="transactions" component={Transactions} options={{
+        <Tab.Screen key="transactions" name="transactions" component={Transactions} options={{
           tabBarLabel: '',
           tabBarIcon: ({ color }) => (
               <AntDesign name="swap" size={30} color={color} />
